@@ -23,7 +23,7 @@ public class HttpClient {
 
 
     public static void main(String[] args) throws IOException {
-        String result = httpGet("http://127.0.0.1:8808/test");
+        String result = httpGet("http://127.0.0.1:8801");
         System.out.println("--------------------------------------------->【HttpClient】请求结果:" + result);
     }
 
