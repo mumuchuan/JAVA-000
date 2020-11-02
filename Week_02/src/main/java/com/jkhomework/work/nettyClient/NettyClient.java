@@ -48,7 +48,7 @@ public class NettyClient {
 
             // Start the client.
             ChannelFuture f = b.connect(host, port).sync();
-            String urlStr = "http://" + host + "/" + port ;
+            String urlStr = "http://" + host + ":" + port ;
             URI uri = new URI(urlStr);
             String msg = "Are you ok?";
             DefaultFullHttpRequest request = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET,
