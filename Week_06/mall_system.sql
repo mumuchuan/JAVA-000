@@ -16,7 +16,7 @@ customer_level TINYINT NOT NULL DEFAULT 1 COMMENT '会员级别：1 普通会员
 user_money DECIMAL ( 8, 2 ) NOT NULL DEFAULT 0.00 COMMENT '用户余额',
 modified_time bigint(20) DEFAULT '0'  COMMENT '最后修改时间',
 PRIMARY KEY pk_customerinfid ( customer_inf_id ) 
-) ENGINE = INNODB COMMENT '用户信息表';
+) engine=InnoDB default charset=utf8 COMMENT '用户信息表';
 
 
 -- 商品信息表(product_info)
@@ -46,7 +46,7 @@ descript TEXT NOT NULL COMMENT '商品描述',
 indate bigint(20) DEFAULT '0'   COMMENT '商品录入时间',
 modified_time bigint(20) DEFAULT '0'  COMMENT '最后修改时间',
 PRIMARY KEY pk_productid ( product_id ) 
-) ENGINE = INNODB COMMENT '商品信息表';
+) engine=InnoDB default charset=utf8 COMMENT '商品信息表';
 
 
 -- 订单主表（order_master）
@@ -76,7 +76,7 @@ order_point INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '订单积分',
 invoice_time VARCHAR ( 100 ) COMMENT '发票抬头',
 modified_time bigint(20) DEFAULT '0'  COMMENT '最后修改时间',
 PRIMARY KEY pk_orderid ( order_id ) 
-) ENGINE = INNODB COMMENT '订单主表';
+) engine=InnoDB default charset=utf8 COMMENT '订单主表';
 
 
 -- 订单详情表（order_detail）
@@ -94,7 +94,7 @@ fee_money DECIMAL ( 8, 2 ) NOT NULL DEFAULT 0.00 COMMENT '优惠分摊金额',
 w_id INT UNSIGNED NOT NULL COMMENT '仓库ID',
 modified_time bigint(20) DEFAULT '0' COMMENT '最后修改时间',
 PRIMARY KEY pk_orderdetailid ( order_detail_id ) 
-) ENGINE = INNODB COMMENT '订单详情表';
+) engine=InnoDB default charset=utf8 COMMENT '订单详情表';
 
 -- 购物车表（order_cart）
 drop table if exists mall_system.order_cart;
@@ -107,7 +107,7 @@ price DECIMAL ( 8, 2 ) NOT NULL COMMENT '商品价格',
 add_time bigint(20) DEFAULT '0' COMMENT '加入购物车时间',
 modified_time bigint(20) DEFAULT '0' COMMENT '最后修改时间',
 PRIMARY KEY pk_cartid ( cart_id ) 
-) ENGINE = INNODB COMMENT '购物车表';
+) engine=InnoDB default charset=utf8 COMMENT '购物车表';
 
 
 
@@ -122,7 +122,7 @@ in_transit_cnt INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '在途数据',
 average_cost DECIMAL ( 8, 2 ) NOT NULL DEFAULT 0.00 COMMENT '移动加权成本',
 modified_time bigint(20) DEFAULT '0' COMMENT '最后修改时间',
 PRIMARY KEY pk_wpid ( wp_id ) 
-) ENGINE = INNODB COMMENT '商品库存表';
+) engine=InnoDB default charset=utf8 COMMENT '商品库存表';
 
 
 
