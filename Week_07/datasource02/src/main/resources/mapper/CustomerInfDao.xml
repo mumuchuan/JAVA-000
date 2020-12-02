@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.week07.datasource02.dao.CustomerInfDao">
+
+
+    <!--查询单个-->
+    <select id="queryById" resultType="com.week07.datasource02.entity.CustomerInf">
+        select
+          customer_inf_id, customer_id, customer_name, identity_card_type, identity_card_no, mobile_phone, customer_email, gender, user_point, register_time, birthday, customer_level, user_money, modified_time
+        from mall_system.customer_inf
+        where customer_inf_id = #{customerInfId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultType="com.week07.datasource02.entity.CustomerInf">
+        select
+          customer_inf_id, customer_id, customer_name, identity_card_type, identity_card_no, mobile_phone, customer_email, gender, user_point, register_time, birthday, customer_level, user_money, modified_time
+        from mall_system.customer_inf
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultType="com.week07.datasource02.entity.CustomerInf">
+        select
+        customer_inf_id, customer_id, customer_name, identity_card_type, identity_card_no, mobile_phone, customer_email,
+        gender, user_point, register_time, birthday, customer_level, user_money, modified_time
+        from mall_system.customer_inf
+        <where>
+            <if test="customerInfId != null">
+                and customer_inf_id = #{customerInfId}
+            </if>
+            <if test="customerId != null">
+                and customer_id = #{customerId}
+            </if>
+            <if test="customerName != null and customerName != ''">
+                and customer_name = #{customerName}
+            </if>
+            <if test="identityCardType != null">
+                and identity_card_type = #{identityCardType}
+            </if>
+            <if test="identityCardNo != null and identityCardNo != ''">
+                and identity_card_no = #{identityCardNo}
+            </if>
+            <if test="mobilePhone != null">
+                and mobile_phone = #{mobilePhone}
+            </if>
+            <if test="customerEmail != null and customerEmail != ''">
+                and customer_email = #{customerEmail}
+            </if>
+            <if test="gender != null and gender != ''">
+                and gender = #{gender}
+            </if>
+            <if test="userPoint != null">
+                and user_point = #{userPoint}
+            </if>
+            <if test="registerTime != null">
+                and register_time = #{registerTime}
+            </if>
+            <if test="birthday != null">
+                and birthday = #{birthday}
+            </if>
+            <if test="customerLevel != null">
+                and customer_level = #{customerLevel}
+            </if>
+            <if test="userMoney != null">
+                and user_money = #{userMoney}
+            </if>
+            <if test="modifiedTime != null">
+                and modified_time = #{modifiedTime}
+            </if>
+        </where>
+    </select>
+
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="customerInfId" useGeneratedKeys="true">
+        insert into mall_system.customer_inf(
+        <if test="customerId != null">
+            customer_id,
+        </if>
+        <if test="customerName != null and customerName != ''">
+            customer_name,
+        </if>
+        <if test="identityCardType != null">
+            identity_card_type,
+        </if>
+        <if test="identityCardNo != null and identityCardNo != ''">
+            identity_card_no,
+        </if>
+        <if test="mobilePhone != null">
+            mobile_phone,
+        </if>
+        <if test="customerEmail != null and customerEmail != ''">
+            customer_email,
+        </if>
+        <if test="gender != null and gender != ''">
+            gender,
+        </if>
+        <if test="userPoint != null">
+            user_point,
+        </if>
+        <if test="registerTime != null">
+            register_time,
+        </if>
+        <if test="birthday != null">
+            birthday,
+        </if>
+        <if test="customerLevel != null">
+            customer_level,
+        </if>
+        <if test="userMoney != null">
+            user_money,
+        </if>
+        <if test="modifiedTime != null">
+            modified_time,
+        </if>
+        )
+        values (
+        <if test="customerId != null">
+            #{customerId},
+        </if>
+        <if test="customerName != null and customerName != ''">
+            #{customerName},
+        </if>
+        <if test="identityCardType != null">
+            #{identityCardType},
+        </if>
+        <if test="identityCardNo != null and identityCardNo != ''">
+            #{identityCardNo},
+        </if>
+        <if test="mobilePhone != null">
+            #{mobilePhone},
+        </if>
+        <if test="customerEmail != null and customerEmail != ''">
+            #{customerEmail},
+        </if>
+        <if test="gender != null and gender != ''">
+            #{gender},
+        </if>
+        <if test="userPoint != null">
+            #{userPoint},
+        </if>
+        <if test="registerTime != null">
+            #{registerTime},
+        </if>
+        <if test="birthday != null">
+            #{birthday},
+        </if>
+        <if test="customerLevel != null">
+            #{customerLevel},
+        </if>
+        <if test="userMoney != null">
+            #{userMoney},
+        </if>
+        <if test="modifiedTime != null">
+            #{modifiedTime},
+        </if>
+        )
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update mall_system.customer_inf
+        <set>
+            <if test="customerId != null">
+                customer_id = #{customerId},
+            </if>
+            <if test="customerName != null">
+                customer_name = #{customerName},
+            </if>
+            <if test="identityCardType != null">
+                identity_card_type = #{identityCardType},
+            </if>
+            <if test="identityCardNo != null">
+                identity_card_no = #{identityCardNo},
+            </if>
+            <if test="mobilePhone != null">
+                mobile_phone = #{mobilePhone},
+            </if>
+            <if test="customerEmail != null">
+                customer_email = #{customerEmail},
+            </if>
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+            <if test="userPoint != null">
+                user_point = #{userPoint},
+            </if>
+            <if test="registerTime != null">
+                register_time = #{registerTime},
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday},
+            </if>
+            <if test="customerLevel != null">
+                customer_level = #{customerLevel},
+            </if>
+            <if test="userMoney != null">
+                user_money = #{userMoney},
+            </if>
+            <if test="modifiedTime != null">
+                modified_time = #{modifiedTime},
+            </if>
+        </set>
+        where customer_inf_id = #{customerInfId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from mall_system.customer_inf where customer_inf_id = #{customerInfId}
+    </delete>
+
+</mapper>
