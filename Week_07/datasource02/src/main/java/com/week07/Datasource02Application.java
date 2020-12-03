@@ -1,28 +1,35 @@
-package com.week07.datasource02;
+package com.week07;
 
+import com.week07.datasource02.dao.CustomerInfDao;
+import com.week07.datasource02.entity.CustomerInf;
 import com.zaxxer.hikari.HikariDataSource;
-import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.shardingsphere.driver.api.ShardingSphereDataSourceFactory;
 import org.apache.shardingsphere.infra.config.algorithm.ShardingSphereAlgorithmConfiguration;
 import org.apache.shardingsphere.replicaquery.api.config.ReplicaQueryRuleConfiguration;
 import org.apache.shardingsphere.replicaquery.api.config.rule.ReplicaQueryDataSourceRuleConfiguration;
-import org.apache.shardingsphere.sharding.api.config.ShardingRuleConfiguration;
-import org.apache.shardingsphere.sharding.api.config.rule.ShardingTableRuleConfiguration;
-import org.apache.shardingsphere.sharding.api.config.strategy.sharding.StandardShardingStrategyConfiguration;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.*;
 
-@SpringBootApplication
-public class Datasource02Application {
+@SpringBootApplication(scanBasePackages = "com.week07")
+//@MapperScan("com.week07")
+public class Datasource02Application{
 
+    
     public static void main(String[] args) {
         SpringApplication.run(Datasource02Application.class, args);
     }
+
+
 
 //    @Bean
 //    public DataSource dataSource() {

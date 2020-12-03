@@ -3,6 +3,8 @@ package com.week07.datasource02.dao;
 import com.week07.datasource02.entity.CustomerInf;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -14,6 +16,7 @@ import java.util.List;
  * @since 2020-12-02 20:45:11
  */
 @Mapper
+//@Repository("customerInfDao")
 public interface CustomerInfDao {
 
     /**

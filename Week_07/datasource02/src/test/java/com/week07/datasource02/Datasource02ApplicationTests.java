@@ -1,19 +1,19 @@
 package com.week07.datasource02;
 
+import com.week07.Datasource02Application;
 import com.week07.datasource02.dao.CustomerInfDao;
 import com.week07.datasource02.entity.CustomerInf;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.annotation.Resource;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Datasource02Application.class)
-class Datasource02ApplicationTests {
+public class Datasource02ApplicationTests {
 
-    @Resource
+    @Autowired
     private CustomerInfDao customerInfDao;
 
     @Test
@@ -25,10 +25,10 @@ class Datasource02ApplicationTests {
         customerInfDao.insert(customerInf);
     }
 
-//    @Test
-//    public void testQuery() {
-//        CustomerInf customerInf = customerInfDao.queryById(1);
-//        System.out.println("-------------------------"+customerInf.toString());
-//    }
+    @Test
+    public void testQuery() {
+        CustomerInf customerInf = customerInfDao.queryById(1);
+        System.out.println("-------------------------"+customerInf.toString());
+    }
 
 }

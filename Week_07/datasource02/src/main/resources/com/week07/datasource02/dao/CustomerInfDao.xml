@@ -73,7 +73,7 @@
 
 
     <!--新增所有列-->
-    <insert id="insert" keyProperty="customerInfId" useGeneratedKeys="true">
+    <insert id="insert"  parameterType="com.week07.datasource02.entity.CustomerInf" keyProperty="customerInfId" useGeneratedKeys="true">
         insert into mall_system.customer_inf(
         <if test="customerId != null">
             customer_id,
@@ -111,9 +111,7 @@
         <if test="userMoney != null">
             user_money,
         </if>
-        <if test="modifiedTime != null">
-            modified_time,
-        </if>
+            modified_time
         )
         values (
         <if test="customerId != null">
@@ -152,9 +150,7 @@
         <if test="userMoney != null">
             #{userMoney},
         </if>
-        <if test="modifiedTime != null">
-            #{modifiedTime},
-        </if>
+            UNIX_TIMESTAMP(now())
         )
     </insert>
 

@@ -13,11 +13,11 @@ public class CustomerInf implements Serializable {
     /**
      * 自增主键ID
      */
-    private Object customerInfId;
+    private Integer customerInfId;
     /**
      * customer_login表的自增ID
      */
-    private Object customerId;
+    private Integer customerId;
     /**
      * 用户真实姓名
      */
@@ -33,7 +33,7 @@ public class CustomerInf implements Serializable {
     /**
      * 手机号
      */
-    private Object mobilePhone;
+    private Integer mobilePhone;
     /**
      * 邮箱
      */
@@ -68,19 +68,19 @@ public class CustomerInf implements Serializable {
     private Long modifiedTime;
 
 
-    public Object getCustomerInfId() {
+    public Integer getCustomerInfId() {
         return customerInfId;
     }
 
-    public void setCustomerInfId(Object customerInfId) {
+    public void setCustomerInfId(Integer customerInfId) {
         this.customerInfId = customerInfId;
     }
 
-    public Object getCustomerId() {
+    public Integer getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(Object customerId) {
+    public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
 
@@ -108,11 +108,11 @@ public class CustomerInf implements Serializable {
         this.identityCardNo = identityCardNo;
     }
 
-    public Object getMobilePhone() {
+    public Integer getMobilePhone() {
         return mobilePhone;
     }
 
-    public void setMobilePhone(Object mobilePhone) {
+    public void setMobilePhone(Integer mobilePhone) {
         this.mobilePhone = mobilePhone;
     }
 
