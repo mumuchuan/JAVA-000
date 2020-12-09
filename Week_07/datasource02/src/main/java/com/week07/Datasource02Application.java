@@ -21,7 +21,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 @SpringBootApplication(scanBasePackages = "com.week07")
-//@MapperScan("com.week07")
+@MapperScan("com.week07")
 public class Datasource02Application{
 
     

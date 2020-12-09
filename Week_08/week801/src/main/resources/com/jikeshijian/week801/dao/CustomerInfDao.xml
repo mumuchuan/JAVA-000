@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jikeshijian.week801.dao.CustomerInfDao">
+
+    <resultMap type="com.jikeshijian.week801.entity.CustomerInf" id="CustomerInf0Map">
+        <result property="customerInfId" column="customer_inf_id" jdbcType="OTHER"/>
+        <result property="customerId" column="customer_id" jdbcType="OTHER"/>
+        <result property="customerName" column="customer_name" jdbcType="VARCHAR"/>
+        <result property="identityCardType" column="identity_card_type" jdbcType="INTEGER"/>
+        <result property="identityCardNo" column="identity_card_no" jdbcType="VARCHAR"/>
+        <result property="mobilePhone" column="mobile_phone" jdbcType="OTHER"/>
+        <result property="customerEmail" column="customer_email" jdbcType="VARCHAR"/>
+        <result property="gender" column="gender" jdbcType="VARCHAR"/>
+        <result property="userPoint" column="user_point" jdbcType="INTEGER"/>
+        <result property="registerTime" column="register_time" jdbcType="INTEGER"/>
+        <result property="birthday" column="birthday" jdbcType="INTEGER"/>
+        <result property="customerLevel" column="customer_level" jdbcType="INTEGER"/>
+        <result property="userMoney" column="user_money" jdbcType="NUMERIC"/>
+        <result property="modifiedTime" column="modified_time" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="CustomerInf0Map">
+        select
+          customer_inf_id, customer_id, customer_name, identity_card_type, identity_card_no, mobile_phone, customer_email, gender, user_point, register_time, birthday, customer_level, user_money, modified_time
+        from customer_inf
+        where customer_inf_id = #{customerInfId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="CustomerInf0Map">
+        select
+          customer_inf_id, customer_id, customer_name, identity_card_type, identity_card_no, mobile_phone, customer_email, gender, user_point, register_time, birthday, customer_level, user_money, modified_time
+        from customer_inf
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="CustomerInf0Map">
+        select
+        customer_inf_id, customer_id, customer_name, identity_card_type, identity_card_no, mobile_phone, customer_email,
+        gender, user_point, register_time, birthday, customer_level, user_money, modified_time
+        from customer_inf
+        <where>
+            <if test="customerInfId != null">
+                and customer_inf_id = #{customerInfId}
+            </if>
+            <if test="customerId != null">
+                and customer_id = #{customerId}
+            </if>
+            <if test="customerName != null and customerName != ''">
+                and customer_name = #{customerName}
+            </if>
+            <if test="identityCardType != null">
+                and identity_card_type = #{identityCardType}
+            </if>
+            <if test="identityCardNo != null and identityCardNo != ''">
+                and identity_card_no = #{identityCardNo}
+            </if>
+            <if test="mobilePhone != null">
+                and mobile_phone = #{mobilePhone}
+            </if>
+            <if test="customerEmail != null and customerEmail != ''">
+                and customer_email = #{customerEmail}
+            </if>
+            <if test="gender != null and gender != ''">
+                and gender = #{gender}
+            </if>
+            <if test="userPoint != null">
+                and user_point = #{userPoint}
+            </if>
+            <if test="registerTime != null">
+                and register_time = #{registerTime}
+            </if>
+            <if test="birthday != null">
+                and birthday = #{birthday}
+            </if>
+            <if test="customerLevel != null">
+                and customer_level = #{customerLevel}
+            </if>
+            <if test="userMoney != null">
+                and user_money = #{userMoney}
+            </if>
+            <if test="modifiedTime != null">
+                and modified_time = #{modifiedTime}
+            </if>
+        </where>
+    </select>
+
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="customerInfId" useGeneratedKeys="true">
+        insert into customer_inf(
+        <if test="customerId != null">
+            customer_id,
+        </if>
+        <if test="customerName != null and customerName != ''">
+            customer_name,
+        </if>
+        <if test="identityCardType != null">
+            identity_card_type,
+        </if>
+        <if test="identityCardNo != null and identityCardNo != ''">
+            identity_card_no,
+        </if>
+        <if test="mobilePhone != null">
+            mobile_phone,
+        </if>
+        <if test="customerEmail != null and customerEmail != ''">
+            customer_email,
+        </if>
+        <if test="gender != null and gender != ''">
+            gender,
+        </if>
+        <if test="userPoint != null">
+            user_point,
+        </if>
+        <if test="registerTime != null">
+            register_time,
+        </if>
+        <if test="birthday != null">
+            birthday,
+        </if>
+        <if test="customerLevel != null">
+            customer_level,
+        </if>
+        <if test="userMoney != null">
+            user_money,
+        </if>
+            modified_time
+        )
+        values (
+        <if test="customerId != null">
+            #{customerId},
+        </if>
+        <if test="customerName != null and customerName != ''">
+            #{customerName},
+        </if>
+        <if test="identityCardType != null">
+            #{identityCardType},
+        </if>
+        <if test="identityCardNo != null and identityCardNo != ''">
+            #{identityCardNo},
+        </if>
+        <if test="mobilePhone != null">
+            #{mobilePhone},
+        </if>
+        <if test="customerEmail != null and customerEmail != ''">
+            #{customerEmail},
+        </if>
+        <if test="gender != null and gender != ''">
+            #{gender},
+        </if>
+        <if test="userPoint != null">
+            #{userPoint},
+        </if>
+        <if test="registerTime != null">
+            #{registerTime},
+        </if>
+        <if test="birthday != null">
+            #{birthday},
+        </if>
+        <if test="customerLevel != null">
+            #{customerLevel},
+        </if>
+        <if test="userMoney != null">
+            #{userMoney},
+        </if>
+            #{modifiedTime}
+        )
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update customer_inf
+        <set>
+            <if test="customerId != null">
+                customer_id = #{customerId},
+            </if>
+            <if test="customerName != null">
+                customer_name = #{customerName},
+            </if>
+            <if test="identityCardType != null">
+                identity_card_type = #{identityCardType},
+            </if>
+            <if test="identityCardNo != null">
+                identity_card_no = #{identityCardNo},
+            </if>
+            <if test="mobilePhone != null">
+                mobile_phone = #{mobilePhone},
+            </if>
+            <if test="customerEmail != null">
+                customer_email = #{customerEmail},
+            </if>
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+            <if test="userPoint != null">
+                user_point = #{userPoint},
+            </if>
+            <if test="registerTime != null">
+                register_time = #{registerTime},
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday},
+            </if>
+            <if test="customerLevel != null">
+                customer_level = #{customerLevel},
+            </if>
+            <if test="userMoney != null">
+                user_money = #{userMoney},
+            </if>
+            <if test="modifiedTime != null">
+                modified_time = #{modifiedTime},
+            </if>
+        </set>
+        where customer_inf_id = #{customerInfId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from customer_inf where customer_inf_id = #{customerInfId}
+    </delete>
+
+</mapper>
