@@ -25,10 +25,15 @@ public class GoodsServiceImpl implements GoodsService {
         Jedis jedis = new Jedis("localhost", 6379);
         System.out.println(jedis.info());
         if(jedis.exists(key)){
-            System.out.println("购买之前库存："+jedis.get(key));
-            //商品key:goods_1,初始库存100已经设置缓存中，此处只模拟购买时商品减库存，不做db处理
-            jedis.decr("goods_1");
-            System.out.println("购买之后库存："+jedis.get(key));
+            Integer count = Integer.valueOf(jedis.get(key).toString());
+            System.out.println("购买之前库存："+count);
+            if(count > 0){
+                //商品key:goods_1,初始库存100已经设置缓存中，此处只模拟购买时商品减库存，不做db处理
+                jedis.decr("goods_1");
+                System.out.println("购买之后库存："+jedis.get(key));
+            }else {
+                System.out.println("商品已卖完");
+            }
         }else {
             //商品不存在
             return 0;
